@@ -1,7 +1,6 @@
 <?php
 include("../app/CarClass.php");
 $_SESSION["ocarrito"]->introduce_item($_GET["cci"], 'nombre', 'precio' );
-echo $_SESSION["ocarrito"]->introduce_item($_GET["cci"], 'nombre', 'precio' );
 ?>
 
 <html>

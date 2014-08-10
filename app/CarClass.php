@@ -20,7 +20,6 @@
 		$this->array_nombre_item[$this->num_items]=$nombre_item;
 		$this->array_precio_item[$this->num_items]=$precio_item;
 		$this->num_items++;
-		return $this->array_id_item[1];
 	}
 
 	//Muestra el contenido del carrito de la compra

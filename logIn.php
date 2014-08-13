@@ -133,21 +133,6 @@
 	include "footer.php";
 	?>
 
-	<!-- start: Copyright -->
-	<div id="copyright">
-	
-		<!-- start: Container -->
-		<div class="container">
-			<p>&copy; 2014 DevIt! - Christian Avalos</p>
-			<p>
-				&copy; 2013, creativeLabs. <a href="http://bootstrapmaster.com" alt="Bootstrap Themes">Bootstrap Themes</a> designed by BootstrapMaster in Poland <img src="img/poland2.png" alt="Poland" style="margin-top:-4px">
-			</p>
-			
-		</div>
-		<!-- end: Container  -->
-		
-	</div>	
-	<!-- end: Copyright -->	
 
 <!-- start: Java Script -->
 <!-- Placed at the end of the document so the pages load faster -->

@@ -12,6 +12,9 @@
 				</div>
 				<!--end: Logo -->
 					<?php 
+
+					
+
 						if(!isset($_SESSION['cloudUser']['cnick']))	
 							{	print('<div class="span9">
 									<a class="pull-right" href="signUp.php"><button tabindex="3" class="btn btn-succes btn-large">Registrarse</button></a>
@@ -33,18 +36,19 @@
 			            			<ul class="nav">
 			              				<li><a href="index.php">Inicio</a></li>
 										<li><a href="items.php">Items</a></li>
-			              				<li><a href="carrito.php">Carrito</a></li>
+			              				<li><a href="carrito.php">Carrito ('.$_SESSION['ocarrito']->num_items.')</a></li>
+			              				<li><a href="c_chat.php">Chat</a></li>
 			              				<li class="dropdown">
 			                				<a href="#" class="dropdown-toggle" data-toggle="dropdown">'.$_SESSION['cloudUser']['cnick'].' <b class="caret"></b></a>
 			                				<ul class="dropdown-menu">
 			                  					<li><a href="edit_acc.php">Editar mi cuenta</a></li>
-			                  					<li><a href="add_ste_acc.php">Añadir cuenta de Steam</a></li>
+			                  					<li><a href="rec_c.php">Hacer recarga</a></li>
 			                  					<li class="divider"></li>
 			                  					<li class="nav-header"></li>
 			                  					<li><a href="Controlador/logout.php">Cerrar Sesión</a></li>
 			                				</ul>
 			              				</li>
-			            			</ul>
+			            			</ul><div class="circle_ol"></div><img class="avatarIcon_m" align="left" src="'.$_SESSION['cloudUser']['avatarIcon'].'">
 			          			</div>
 			        		</div>
 			      		</div>

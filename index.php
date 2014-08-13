@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
-<?php session_start();
+<?php include("app/CarClass.php");
 ?>
 <head>
 

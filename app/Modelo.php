@@ -21,7 +21,7 @@
 	
      public function conectar_usuarios($cu, $pass) {
 		
-		$sql = "select * from cloud_users where cloud_user='".$cu."' and enc_pass='".$pass."'";
+		$sql = "select cloud_user,enc_pass,ste_acc from cloud_users where cloud_user='".$cu."' and enc_pass='".$pass."'";
          $result = mysqli_query($this->conexion,$sql);
 
          $datos = array();
@@ -42,139 +42,19 @@
 	}
 	
 	 
-     public function listarMesas()
+     public function listarItems()
      {
-         $sql = "select id_mesa from mesa";
+         $sql = "select it_nombre,it_stock,it_precio,it_aspecto,it_hero,it_id,it_limg from items_cloud_d";
 
          $result = mysqli_query($this->conexion, $sql);
 
-         $mesa = array();
+         $items = array();
          while ($row = mysqli_fetch_assoc($result))
          {
-             $mesa[] = $row;
+             $items[] = $row;
          }
 
-         return $mesa;
+         return $items;
      }
-	 
-	 public function variable()
-     {
-         $sql = "select variable from variable where id_var=1";
-
-         $result = mysqli_query($this->conexion, $sql);
-
-         $var = array();
-         while ($row = mysqli_fetch_assoc($result))
-         {
-             $var[] = $row;
-         }
-
-         return $var[0];
-     }
-	 
-	 public function listarPizzas()
-     {
-         $sql = "select id_pizza,nombre_pizza,precio_pizza from pizza";
-
-         $result = mysqli_query($this->conexion, $sql);
-
-         $pizza = array();
-         while ($row = mysqli_fetch_assoc($result))
-         {
-             $pizza[] = $row;
-         }
-
-         return $pizza;
-     }
-	
-	public function listar_det()
-     {	 
-         $sql = "select id_pedido,id_pizza,cantidad,tipo_pedido,precio,id_recibo,cancelado from pedido_detalle group by id_pedido";
-
-         $result = mysqli_query($this->conexion, $sql);
-
-         $detalle = array();
-         while ($row = mysqli_fetch_assoc($result))
-         {
-             $detalle[] = $row;
-         }
-
-         return $detalle;
-     }
-	 
-	 public function editar_det($cod)
-     {	 $cod=$cod;
-         $sql = "select id_pedido,id_pizza,cantidad,tipo_pedido,precio,id_recibo,cancelado from pedido_detalle where id_pedido=$cod";
-
-         $result = mysqli_query($this->conexion, $sql);
-
-         $detalle = array();
-         while ($row = mysqli_fetch_assoc($result))
-         {
-             $detalle[] = $row;
-         }
-
-         return $detalle;
-     }
-	 
-	 public function contar()
-     {	 
-         $sql = "select id_pedido,id_pizza,cantidad,tipo_pedido,precio,id_recibo,cancelado from pedido_detalle group by id_pedido";
-
-         $result = mysqli_query($this->conexion, $sql);
-
-         $detalle = array();
-         while ($row = mysqli_fetch_assoc($result))
-         {
-             $detalle[] = $row;
-         }
-
-         return count($detalle);
-     }
-	 
-	 public function get_tipo($tipo)
-	 {
-		if($tipo==0)
-		return 'Local';
-		else
-		return 'Delivery';
-	}
-	 
-	 public function get_suc($suc)
-	 {
-		if($suc==0)
-		return 'Barranca';
-		else
-		return 'Paramonga';
-	}
-	
-	 public function get_nompizza($set_id)
-     {		$id = $set_id;
-         $sql = "select nombre_pizza,precio_pizza from pizza where id_pizza=$id";
-
-         $result = mysqli_query($this->conexion, $sql);
-
-         $nombre = array();
-         while ($row = mysqli_fetch_assoc($result))
-         {
-             $nombre[] = $row;
-         }
-         return $nombre;
-     }
-     
-	  public function get_numesa($ped)
-     {		$id = $ped;
-         $sql = "select id_mesa from pedido where id_pedido=$id";
-
-         $result = mysqli_query($this->conexion, $sql);
-
-         $mesa = array();
-         while ($row = mysqli_fetch_assoc($result))
-         {
-             $mesa[] = $row;
-         }
-         return $mesa;
-     }
-
  }
  ?>

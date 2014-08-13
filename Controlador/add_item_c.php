@@ -1,22 +1,5 @@
 <?php
 include("../app/CarClass.php");
-$_SESSION["ocarrito"]->introduce_item($_GET["cci"], 'nombre', 'precio' );
+$_SESSION["ocarrito"]->introduce_item($_GET["cci"], 'sadkjaks klasjdk lasjdlk adklajs dkljas kldajs klsaj dklsaj kldsaj dlk s', 24 ,1);
+header('Location: ../carrito.php')
 ?>
-
-<html>
-<head>
-	<title>Introduce Producto</title>
-</head>
-
-<body>
-
-Producto introducido.
-<br>
-<br>
-<a href="../items.php">- Volver</a>
-<br>
-<br>
-<a href="../carrito.php">- Ver carrito</a>
-
-</body>
-</html>

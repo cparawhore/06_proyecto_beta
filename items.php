@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<?php session_start();
+<html lang="es">
+<?php include("app/CarClass.php");
 ?>
-<html lang="en">
 <head>
 
 	<!-- start: Meta -->
@@ -78,10 +78,10 @@
 	
       		<!-- start: Row -->
       		<div class="row">
-			<!-- Seria bueno crear un nombre clave del producto por ejemplo 3 primeras letras de la 3ra palabra y 3 de la primera si falta alguna rellenar con 0-->
-        		<div class="span4">
+			
+				<div class="span4">
           			<div class="icons-box">
-						<i class="ico-iphone ico-color circle-color big"></i>
+						<img src="http://steamcommunity-a.akamaihd.net/economy/image/W_I_5GLm4wPcv9jJQ7z7tz_l_0sEIYUhRfbF4arNQkgGQGKd3kMuVpMgCwRZrhuYd0af2dNGZOrdChp2Hor-QUuzC6SAy0azT9FLRYUqPX0Y24a26RBPCX6VQedIZ9FE4MWXh1b6ElrVLG9-1NhD06SR3qmPBf-H8Vb4JEEhhLs3YsVOxkcTJmJspjJ9I-0lMlsTxAI5uF-yH-Imz-YVmSxg7eIlaOLskjb_fSMjoO32jNyoAkyD6SVTTy5MJXzeac7tXUXtYjlt93jTR8aG8wwtNwDpow/360fx360f">
 						<div class="title"><h3>Set los Utensilios de Mordor</h3></div>
 						<p>Heroe: Pudge</p>
 						<p>Precio: 24.00 soles</p>
@@ -89,40 +89,6 @@
 						<div class="clear"></div>
 					</div>
         		</div>
-
-        		<div class="span4">
-          			<div class="icons-box">
-						<i class="ico-imac circle big"></i>
-						<div class="title"><h3>Web</h3></div>
-						<p>
-							Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
-						</p>
-						<div class="clear"></div>
-					</div>
-        		</div>
-
-        		<div class="span4">
-          			<div class="icons-box">
-						<i class="ico-embed-close ico-color circle-color big"></i>
-						<div class="title"><h3>HTML5 & CSS3</h3></div>
-						<p>
-							Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
-						</p>
-						<div class="clear"></div>
-					</div>
-        		</div>
-
-        		<div class="span4">
-          			<div class="icons-box">
-						<i class="ico-shopping-cart circle big"></i>
-						<div class="title"><h3>e-commerce</h3></div>
-						<p>
-							Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
-						</p>
-						<div class="clear"></div>
-					</div>
-        		</div>
-
       		</div>
 			<!-- end: Row -->
       	

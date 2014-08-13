@@ -66,7 +66,8 @@
 		<div class="container">
 		
 			<p>
-				&copy; 2014, DevIt! - Christian Avalos. </br> 
+				&copy; 2014, DevIt! - Christian Avalos. </br>
+				<a href="http://steampowered.com">Powered by Steam</a></br>
 				&copy; 2013, creativeLabs. <a href="http://bootstrapmaster.com" alt="Bootstrap Themes">Bootstrap Themes</a> designed by BootstrapMaster in Poland <img src="img/poland2.png" alt="Poland" style="margin-top:-4px">
 			</p>
 	

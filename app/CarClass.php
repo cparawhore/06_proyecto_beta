@@ -12,6 +12,17 @@
 	function carrito () {
    		$this->num_items=0;
 	}
+
+	function getItem () {
+		$cant = 0;
+		for ($i=0;$i<$this->num_items;$i++){
+			if($this->array_id_item[$i]!=null)
+			{ 
+				$cant++;
+			}
+		}	
+   		return $cant;		
+	}
 	
 	//Introduce un producto en el carrito. Recibe los datos del producto
 	//Se encarga de introducir los datos en los arrays del objeto carrito
@@ -42,7 +53,8 @@
 	//ademas pone los enlaces para eliminar un producto del carrito
 	function imprime_carrito(){
 		$suma = 0;
-		echo '<table class="table table-hover" cellpadding="3">
+		echo '<form action="Controlador/upd_car.php" method="post">
+		<table class="table table-hover" cellpadding="3">
 				<thead>
 			  <tr>
 				<th><b>Nombre producto</b></th>
@@ -55,15 +67,17 @@
 				echo '<tr>';
 				echo "<td>" . $this->array_nombre_item[$i] . "</td>";
 				echo "<td>" . $this->array_precio_item[$i] . "</td>";
-				echo "<td><input type='text' value='" . $this->array_cant_item[$i] . "' class='item-cantidad'></td>";
-				echo "<td><a href='Controlador/delete_item_c.php?linea=$i'>Eliminar producto</td>";
+				echo "<td><input type='text' value='" . $this->array_cant_item[$i] . "' class='item-cantidad' name='q[]'>
+							<input type='hidden' value='$i' name='linea[]'></td>";
+				echo "<td><a href='Controlador/delete_item_c.php?linea=$i'>Eliminar</td>";
 				echo '</tr>';
 				$suma += $this->array_precio_item[$i] * $this->array_cant_item[$i];
 			}
 		}
 		//muestro el total
-		echo "<tr><td></td><td><b>TOTAL:</b></td><td> <b>$suma</b></td><td>&nbsp;</td></tr>";
-		echo "</table>";
+		echo "<tr><td></td><td><b>TOTAL:</b></td><td> <b>$suma</b></td><td><input id='update-b' class='btn btn-success' type='submit' value='Actualizar'></td></tr>";
+		echo "</table>
+				</form>";
 	}
 	
 
@@ -71,6 +85,10 @@
 	//no lo elimina realmente, simplemente pone a cero el id, para saber que esta en estado retirado
 	function elimina_item($linea){
 		$this->array_id_item[$linea]=null;
+	}
+
+	function actualiza_item($linea,$q){
+		$this->array_cant_item[$linea]=$q;
 	}
 
 

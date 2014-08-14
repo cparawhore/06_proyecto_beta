@@ -43,8 +43,12 @@ h1, h2, h3, h4, h5, h6 {
   border: 0;
 }
 
+.a-head{
+ padding: 8px;
+}
+
 .item-cantidad  {
-	width:56px;
+	width:26px;
 }
 
 .avatarIcon_m {
@@ -145,8 +149,8 @@ header {
 
 .navbar .nav > li > a:focus,
 .navbar .nav > li > a:hover {
-	border-top:4px solid #89c236;
-  	background: #89c236 !important;		
+	border-top:4px solid #65DCFA;
+  	background: #65DCFA !important;		
   	color: #fff;
 }
 
@@ -166,7 +170,7 @@ header {
 .dropdown-menu li > a:focus,
 .dropdown-submenu:hover > a {
   color: #ffffff;
-  background: #89c236 !important;	
+  background: #65DCFA !important;	
 }
 
 .dropdown-menu .active > a,

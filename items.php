@@ -1,11 +1,19 @@
 <!DOCTYPE html>
 <html lang="es">
 <?php include("app/CarClass.php");
+require_once("app/Config.php");
+require_once("app/Modelo.php");
+if(isset($_GET['p'])){
+	$_SESSION['cloudUser']['p_num']=$_REQUEST['p'];
+}
+else{
+	$_SESSION['cloudUser']['p_num']=0;
+}
 ?>
 <head>
 
 	<!-- start: Meta -->
-	<meta charset="utf-8">
+	<meta http-equiv="Content-type" content="text/html" charset="utf-8">
 	<title>GotYA FREE BOOTSTRAP THEME by BootstrapMaster</title> 
 	<meta name="description" content="GotYa Free Bootstrap Theme"/>
 	<meta name="keywords" content="Template, Theme, web, html5, css3, Bootstrap" />
@@ -77,19 +85,44 @@
     	<div class="container">
 	
       		<!-- start: Row -->
-      		<div class="row">
-			
-				<div class="span4">
-          			<div class="icons-box">
-						<img src="http://steamcommunity-a.akamaihd.net/economy/image/W_I_5GLm4wPcv9jJQ7z7tz_l_0sEIYUhRfbF4arNQkgGQGKd3kMuVpMgCwRZrhuYd0af2dNGZOrdChp2Hor-QUuzC6SAy0azT9FLRYUqPX0Y24a26RBPCX6VQedIZ9FE4MWXh1b6ElrVLG9-1NhD06SR3qmPBf-H8Vb4JEEhhLs3YsVOxkcTJmJspjJ9I-0lMlsTxAI5uF-yH-Imz-YVmSxg7eIlaOLskjb_fSMjoO32jNyoAkyD6SVTTy5MJXzeac7tXUXtYjlt93jTR8aG8wwtNwDpow/360fx360f">
-						<div class="title"><h3>Set los Utensilios de Mordor</h3></div>
-						<p>Heroe: Pudge</p>
-						<p>Precio: 24.00 soles</p>
-						<a href="Controlador/add_item_c.php?cci=UTESET001"><button class="btn btn-default">Añadir al carrito</button></a>
-						<div class="clear"></div>
-					</div>
-        		</div>
-      		</div>
+      		
+			<?php
+				$m = new Model(Config::$mvc_bd_hostname, Config::$mvc_bd_usuario,Config::$mvc_bd_clave, Config::$mvc_bd_nombre);
+				$items = $m->listarItems($_SESSION['cloudUser']['p_num']*6,6);
+				if (count($items)==0) {
+					header('Location: items.php');
+				}
+
+				echo '<div class="row">';
+				for ($i=0; $i < count($items)/2 ; $i++) { 
+					echo 	'<div class="span4">
+								<div class="icons-box">
+									<img src="'.$items[$i]['it_limg'].'">
+									<div class="title"><h3>'.$items[$i]['it_nombre'].'</h3></div>
+									<p>Heroe: '.$items[$i]['it_hero'].'</p>
+									<p>Precio: '.$items[$i]['it_precio'].' soles</p>
+									<a href="Controlador/add_item_c.php?cci='.$items[$i]['it_id'].'" id="btn_add"><button class="btn btn-default">Añadir al carrito</button></a>
+								</div>
+							</div>';
+				}
+				echo '</div>';
+
+				echo '<div class="row">';
+				for ($i=count($items)/2; $i < count($items) ; $i++) { 
+					echo 	'<div class="span4">
+								<div class="icons-box">
+									<img src="'.$items[$i]['it_limg'].'">
+									<div class="title"><h3>'.$items[$i]['it_nombre'].'</h3></div>
+									<p>Heroe: '.$items[$i]['it_hero'].'</p>
+									<p>Precio: '.$items[$i]['it_precio'].' soles</p>
+									<a href="Controlador/add_item_c.php?cci='.$items[$i]['it_id'].'" id="btn_add"><button class="btn btn-default">Añadir al carrito</button></a>
+								</div>
+							</div>';
+				}
+				echo '</div>';
+			?>
+        		
+      		
 			<!-- end: Row -->
       	
 		</div>
@@ -111,6 +144,7 @@ include 'footer.php';
 <script src="js/carousel.js"></script>
 <script src="js/jquery.cslider.js"></script>
 <script src="js/slider.js"></script>
+<script src="js/jcloud.js"></script>
 <script def src="js/custom.js"></script>
 <!-- end: Java Script -->
 

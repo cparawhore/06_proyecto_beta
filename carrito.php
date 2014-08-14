@@ -2,7 +2,7 @@
 <?php include("app/CarClass.php");
 
 ?>
-<html lang="en">
+<html lang="es">
 <head>
 
 	<!-- start: Meta -->
@@ -81,6 +81,10 @@
       		<div class="row">
 			<!-- Seria bueno crear un nombre clave del producto por ejemplo 3 primeras letras de la 3ra palabra y 3 de la primera si falta alguna rellenar con 0-->
            		<div class="span12">
+           			<div class="alert alert-warning">
+           				<strong>Atencion</strong> <br>
+						Si cambias la cantidad de alguno de tus pedidos, presiona el boton de Actualizar
+					</div>	
           			<?php
           			$_SESSION['ocarrito']->imprime_carrito();
           			?>

@@ -6,10 +6,10 @@
      public function __construct($dbhost,$dbuser,$dbpass,$dbname)
      {
        $mvc_bd_conexion = mysqli_connect($dbhost, $dbuser, $dbpass, $dbname);
-	   
+	   $acentos = $mvc_bd_conexion->query("SET NAMES 'utf8'");
 	   
        if ($mvc_bd_conexion->connect_error) {
-           die('No ha sido posible realizar la conexión con la base de datos: ' . $mvc_bd_conexion->connect_errno);
+           die('No ha sido posible realizar la conexiÃ³n con la base de datos: ' . $mvc_bd_conexion->connect_errno);
        }
        //mysql_select_db($dbname, $mvc_bd_conexion);
 
@@ -42,9 +42,9 @@
 	}
 	
 	 
-     public function listarItems()
+     public function listarItems($inicio, $limite)
      {
-         $sql = "select it_nombre,it_stock,it_precio,it_aspecto,it_hero,it_id,it_limg from items_cloud_d";
+         $sql = "select it_nombre,it_stock,it_precio,it_aspecto,it_hero,it_id,it_limg from items_cloud_d limit ".$inicio.",".$limite;
 
          $result = mysqli_query($this->conexion, $sql);
 
@@ -55,6 +55,21 @@
          }
 
          return $items;
+     }
+
+     public function getDataItem($cid)
+     {
+         $sql = "select it_nombre,it_precio,it_aspecto,it_hero,it_id from items_cloud_d where it_id='".$cid."'";
+
+         $result = mysqli_query($this->conexion, $sql);
+
+         $itemsData = array();
+         while ($row = mysqli_fetch_assoc($result))
+         {
+             $itemsData[] = $row;
+         }
+
+         return $itemsData;
      }
  }
  ?>

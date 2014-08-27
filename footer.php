@@ -25,7 +25,7 @@
 				</div>
 				<!-- end: About -->
 
-				<!-- start: Photo Stream -->
+				<!-- start: Photo Stream >
 				<div class="span3">
 
 					<h3>Photo Stream</h3>
@@ -35,14 +35,14 @@
 					</div>
 
 				</div>
-				<!-- end: Photo Stream -->
+				< end: Photo Stream -->
 
 				<div class="span5">
-					<div class="title"><h3>Follow US!</h3></div>
+					<div class="title"><h3>Siguenos!</h3></div>
 					<ul class="social-bookmarks">
 						
 						<li class="deviantart"><a href="#">deviantart</a></li>
-						<li class="facebook"><a href="https://www.facebook.com/brankic1979themes">facebook</a></li>
+						<li class="facebook"><a href="https://www.facebook.com/CloudStoreDota">facebook</a></li>
 						<li class="forrst"><a href="#">forrst</a></li>
 						<li class="github"><a href="#">github</a></li>
 						<li class="tumblr"><a href="#">tumblr</a></li>

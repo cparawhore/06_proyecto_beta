@@ -21,7 +21,7 @@
 	
      public function conectar_usuarios($cu, $pass) {
 		
-		$sql = "select cloud_user,enc_pass,ste_acc from cloud_users where cloud_user='".$cu."' and enc_pass='".$pass."'";
+		$sql = "select pk_cu,cloud_user,enc_pass,ste_acc from cloud_users where cloud_user='".$cu."' and enc_pass='".$pass."'";
          $result = mysqli_query($this->conexion,$sql);
 
          $datos = array();
@@ -34,6 +34,22 @@
          return $datos;
 
 	}
+
+    public function consultar_saldo($pk_cu) {
+        
+        $sql = "select saldo from bcc where pk_cu=".$pk_cu;
+         $result = mysqli_query($this->conexion,$sql);
+
+         $datos = array();
+         
+         while ($row = mysqli_fetch_assoc($result))
+         {
+             $datos = $row;
+         }
+
+         return $datos;
+
+    }
 	
 	public function add_cloud_acc($cu,$enc_pass,$ste_acc){
 		$sql = "insert into cloud_users (cloud_user,enc_pass, ste_acc) values ('".$cu."','".$enc_pass."','".$ste_acc."')";

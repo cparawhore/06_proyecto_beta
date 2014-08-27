@@ -37,9 +37,9 @@
 			              				<li><a href="index.php">Inicio</a></li>
 										<li><a href="items.php">Items</a></li>
 			              				<li><a href="carrito.php">Carrito ('.$_SESSION['ocarrito']->getItem().')</a></li>
-			              				<li><a href="c_chat.php">Chat</a></li>
+			              				<li><a href="carrito.php">Saldo: <b>'.$_SESSION['cloudUser']['pk_cu'].'</b></a></li>
 			              				<li class="dropdown">
-			                				<a href="#" class="dropdown-toggle" data-toggle="dropdown">'.$_SESSION['cloudUser']['cnick'].' <b class="caret"></b></a>
+			                				<a href="#" class="dropdown-toggle" data-toggle="dropdown">'.$_SESSION['cloudUser']['cnick'].'<b class="caret"></b></a>
 			                				<ul class="dropdown-menu">
 			                  					<li><a href="edit_acc.php">Editar mi cuenta</a></li>
 			                  					<li><a href="rec_c.php">Hacer recarga</a></li>

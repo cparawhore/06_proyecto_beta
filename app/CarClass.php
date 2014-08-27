@@ -1,4 +1,5 @@
 <?php
+session_start();
  class carrito {
 	//atributos de la clase
    	var $num_items;
@@ -76,6 +77,9 @@
 		}
 		//muestro el total
 		echo "<tr><td></td><td><b>TOTAL:</b></td><td> <b>$suma</b></td><td><input id='update-b' class='btn btn-success' type='submit' value='Actualizar'></td></tr>";
+		if ($_SESSION['cloudUser']['pk_cu']>0) {
+		echo "<tr><td></td><td></td><td><a href='Controlador/confirmar.php' class='btn btn-info'>Comprar!</a></td><td></td></tr>";
+		}
 		echo "</table>
 				</form>";
 	}
@@ -93,7 +97,6 @@
 
 
 } 
-session_start();
 //si no esta creado el objeto carrito en la sesion, lo creo
 if (!isset($_SESSION["ocarrito"])){
 	$_SESSION["ocarrito"] = new carrito();

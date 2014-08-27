@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
 
 	<!-- start: Meta -->
@@ -43,6 +43,7 @@
 	<!--start: Header -->
 	<header>
 		<?php
+		include("app/CarClass.php");
 		include "header.php";
 		?>		
 	</header>
@@ -55,7 +56,7 @@
 			<!-- start: Container -->
 			<div class="container">
 
-				<h2><i class="ico-justify  ico-white"></i>Ingresar</h2>
+				<h2><i class="ico-retweet-2 ico-white"></i>Recarga</h2>
 
 			</div>
 			<!-- end: Container  -->
@@ -79,35 +80,39 @@
 				<!-- end: Contact Info -->		
 
 				<!-- start: Contact Form -->
-				<div class="span12">
-					<div class="title"><h3>Datos de cuenta</h3></div>
+				<div class="span4">
+					<div class="title"><h3>Formulario de Recarga</h3></div>
 
 					<!-- start: Contact Form -->
 					<div id="contact-form">
 
-						<form method="post" action="Controlador/login.php">
+						<form method="post" action="Controlador/proceso.php" name="form1" id="form1">
 
 							<fieldset>
 								<div class="clearfix">
-									<label for="name"><span>Nombre de Usuario:</span></label>
+									<label for="fecha"><span>Fecha:</span></label>
 									<div class="input">
-										<input tabindex="1" size="18" id="name" name="name" type="text" value="">
+										<input tabindex="1" size="18" id="fecha" name="fecha" type="text" value="" autocomplete="off">
 									</div>
 								</div>
 
 								<div class="clearfix">
-									<label for="contraseña"><span>Contraseña:</span></label>
+									<label for="hora"><span>Hora:</span></label>
 									<div class="input">
-										<input tabindex="2" size="25" id="contraseña" name="contraseña" type="password" value="" class="input-xlarge">
+										<input tabindex="1" size="18" id="hora" name="hora" type="text" value="" autocomplete="off">
 									</div>
 								</div>
-								
-							<a href="rec_acc.php">Olvidé mi contraseña</a>
 
-								<div class="actions">
-									<button tabindex="3" type="submit" class="btn btn-succes btn-large">Ingresar</button>
+								<div class="clearfix">
+									<label for="codigo"><span>Codigo Transacción:</span></label>
+									<div class="input">
+										<input tabindex="2" size="25" id="codigo" name="codigo" type="text" value="" class="input-xlarge">
+									</div>
+									<input type="hidden" value="r" name="p">
 								</div>
-							</fieldset>
+								<div class="actions">
+									<button id="steam_ver" tabindex="3" type="submit" class="btn btn-succes btn-large">Enviar</button>
+								</div></fieldset>
 						</form>
 
 					</div>
@@ -118,6 +123,16 @@
 				</div>
 				<!-- end: Contact Form -->
 					
+						
+					
+				<div class="span8">
+						<div id="divtest">
+						<div class="alert alert-info">
+						<strong>Aviso</strong> 	</br>
+                    <strong>Atención!</strong> Asegurate de verificar e introducir bien los datos, solo tendras 3 intentos por día.
+                		</div>
+                	</div>
+				</div>
 			
 			</div>
 			<!-- end: Row -->
@@ -143,7 +158,7 @@
 <script src="js/jquery.cslider.js"></script>
 <script src="js/slider.js"></script>
 <script def src="js/custom.js"></script>
+<script def src="js/jcloud.js"></script>
 <!-- end: Java Script -->
-
 </body>
 </html>

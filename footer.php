@@ -51,6 +51,20 @@
 					</ul>
 				</div>
 
+				<div class="span4">
+					<div class="title"><h3>Faltan sets o partes?</h3></div>
+					<form method="post" action="Controlador/signup.php">
+      			No encuentras algún item que quieras adquirir? Mandanos una sugerencia, formato :</br>
+      			<b>Set o Item</b> - <b>Heroe</b>
+      			<div class="input">
+										<input tabindex="3" size="18" name="z" type="text" value="" autocomplete="off">
+									</div>
+					<div class="actions">
+						<button id="steam_ver" tabindex="3" type="submit" class="btn btn-succes btn-large">Enviar</button>
+					</div>
+				</form>
+				</div>
+
 			</div>
 			<!-- end: Row -->	
 

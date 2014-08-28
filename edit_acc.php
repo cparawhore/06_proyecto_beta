@@ -43,6 +43,7 @@
 	<!--start: Header -->
 	<header>
 		<?php
+		include("app/CarClass.php");
 		include "header.php";
 		?>		
 	</header>

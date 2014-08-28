@@ -81,12 +81,27 @@
       		<div class="row">
 			<!-- Seria bueno crear un nombre clave del producto por ejemplo 3 primeras letras de la 3ra palabra y 3 de la primera si falta alguna rellenar con 0-->
            		<div class="span12">
-           			<div class="alert alert-warning">
-           				<strong>Atencion</strong> <br>
-						Si cambias la cantidad de alguno de tus pedidos, presiona el boton de Actualizar
-					</div>	
+           				
           			<?php
-          			$_SESSION['ocarrito']->imprime_carrito();
+          			if ($_SESSION['ocarrito']->getS()>0) {
+          				echo '<div class="alert alert-warning">
+           						<strong>Atencion</strong> <br>
+								Si cambias la cantidad de alguno de tus pedidos, presiona el boton de Actualizar
+							</div>';
+						if (isset($_SESSION['error']) && $_SESSION['error']=='nonum') {
+							echo '<div class="alert alert-error">
+           						<strong>Error</strong> <br>
+								Que tratas de hacer bro? Presiona Actualizar
+							</div>';
+						}
+          				$_SESSION['ocarrito']->imprime_carrito();
+          			}
+          			else{
+          				echo '<div class="alert alert-error">
+           						<strong>Error mi amigo!</strong> <br>
+								El carrito esta vacío, llenalo <a href="items.php">aquí</a>
+							</div>';
+          			}
           			?>
         		</div>
 

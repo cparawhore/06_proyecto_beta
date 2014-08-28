@@ -18,9 +18,9 @@
 						if(!isset($_SESSION['cloudUser']['cnick']))	
 							{	print('<div class="span9">
 									<a class="pull-right a-head" href="signUp.php"><button tabindex="3" class="btn btn-succes btn-large">Registrarse</button></a>
-									
+									<a class="pull-right a-head" href="logIn.php"><button tabindex="3" class="btn btn-succes btn-large">Ingresar</button></a>
 			    				</div>'
-			    				//<a class="pull-right a-head" href="logIn.php"><button tabindex="3" class="btn btn-succes btn-large">Ingresar</button></a>	
+			    					
 								);
 							}
 						else

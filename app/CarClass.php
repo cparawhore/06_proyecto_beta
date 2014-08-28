@@ -7,8 +7,6 @@ session_start();
    	var $array_nombre_item;
    	var $array_precio_item;
    	var $array_cant_item;
-   	var $suma_t;
-
 	//constructor. Realiza las tareas de inicializar los objetos cuando se instancian
 	//inicializa el numero de productos a 0
 	function carrito () {
@@ -16,7 +14,13 @@ session_start();
 	}
 
 	function getS () {
-   		return $this->suma_t;
+		$suma = 0;
+		for ($i=0;$i<$this->num_items;$i++){
+			if($this->array_id_item[$i]!=null){
+				$suma += $this->array_precio_item[$i] * $this->array_cant_item[$i];
+			} 
+		}
+   		return $suma;
 	}
 
 	function confirmar () {
@@ -86,7 +90,7 @@ session_start();
 				echo '<tr>';
 				echo "<td>" . $this->array_nombre_item[$i] . "</td>";
 				echo "<td>" . $this->array_precio_item[$i] . "</td>";
-				echo "<td><input type='text' value='" . $this->array_cant_item[$i] . "' class='item-cantidad' name='q[]'>
+				echo "<td><input type='text' value='" . $this->array_cant_item[$i] . "' class='item-cantidad' name='q[]' autocomplete='off'>
 							<input type='hidden' value='$i' name='linea[]'></td>";
 				echo "<td><a href='Controlador/delete_item_c.php?linea=$i'>Eliminar</td>";
 				echo '</tr>';
@@ -94,12 +98,15 @@ session_start();
 			} 
 		}
 
-		$this->suma_t = $suma;
 		//muestro el total
-		echo "<tr><td></td><td><b>TOTAL:</b></td><td> <b>$suma</b></td><td><input class='btn btn-success' type='submit'".'onclick ="this.form.action ='."'Controlador/upd_car.php'".'"'." value='Actualizar'></td></tr>";
+		
+			echo "<tr><td></td><td><b>TOTAL:</b></td><td> <b>$suma</b></td><td><input class='btn btn-success' type='submit'".'onclick ="this.form.action ='."'Controlador/upd_car.php'".'"'." value='Actualizar'></td></tr>";
+		
 		if($_SESSION['cloudUser']['saldo']>0){
 			if ($_SESSION['cloudUser']['saldo']>$suma) {
+				if ($suma>0) {
 					echo "<tr><td></td><td></td><td><input class='btn btn-info' type='submit'".'onclick ="this.form.action ='."'Controlador/confirmar.php'".'"'." value='Comprar!'></td><td></td></tr>";
+				}	
 			}
 			else{}
 		}

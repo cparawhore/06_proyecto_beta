@@ -85,7 +85,6 @@ else{
     	<div class="container">
 	
       		<!-- start: Row -->
-      		
 			<?php
 				$m = new Model(Config::$mvc_bd_hostname, Config::$mvc_bd_usuario,Config::$mvc_bd_clave, Config::$mvc_bd_nombre);
 				$items = $m->listarItems($_SESSION['cloudUser']['p_num']*6,6);

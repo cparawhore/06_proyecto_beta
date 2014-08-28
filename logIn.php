@@ -91,7 +91,7 @@
 								<div class="clearfix">
 									<label for="name"><span>Nombre de Usuario:</span></label>
 									<div class="input">
-										<input tabindex="1" size="18" id="name" name="name" type="text" value="">
+										<input tabindex="1" size="18" id="name" name="name" type="text" value="" autocomplete="off">
 									</div>
 								</div>
 

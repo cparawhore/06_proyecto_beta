@@ -7,11 +7,29 @@ session_start();
    	var $array_nombre_item;
    	var $array_precio_item;
    	var $array_cant_item;
+   	var $suma_t;
 
 	//constructor. Realiza las tareas de inicializar los objetos cuando se instancian
 	//inicializa el numero de productos a 0
 	function carrito () {
    		$this->num_items=0;
+	}
+
+	function getS () {
+   		return $this->suma_t;
+	}
+
+	function confirmar () {
+		$datos = array();
+   		for ($i=0;$i<$this->num_items;$i++){
+			if($this->array_id_item[$i]!=null){
+				$datos[$i]['id'] = $this->array_id_item[$i];
+				$datos[$i]['nombre'] = $this->array_nombre_item[$i];
+				$datos[$i]['precio'] = $this->array_precio_item[$i];
+				$datos[$i]['cant'] = $this->array_cant_item[$i];				
+			}
+		}
+		return $datos;
 	}
 
 	function getItem () {
@@ -54,7 +72,7 @@ session_start();
 	//ademas pone los enlaces para eliminar un producto del carrito
 	function imprime_carrito(){
 		$suma = 0;
-		echo '<form action="Controlador/upd_car.php" method="post">
+		echo '<form method="post">
 		<table class="table table-hover" cellpadding="3">
 				<thead>
 			  <tr>
@@ -73,15 +91,25 @@ session_start();
 				echo "<td><a href='Controlador/delete_item_c.php?linea=$i'>Eliminar</td>";
 				echo '</tr>';
 				$suma += $this->array_precio_item[$i] * $this->array_cant_item[$i];
+			} 
+		}
+
+		$this->suma_t = $suma;
+		//muestro el total
+		echo "<tr><td></td><td><b>TOTAL:</b></td><td> <b>$suma</b></td><td><input class='btn btn-success' type='submit'".'onclick ="this.form.action ='."'Controlador/upd_car.php'".'"'." value='Actualizar'></td></tr>";
+		if($_SESSION['cloudUser']['saldo']>0){
+			if ($_SESSION['cloudUser']['saldo']>$suma) {
+					echo "<tr><td></td><td></td><td><input class='btn btn-info' type='submit'".'onclick ="this.form.action ='."'Controlador/confirmar.php'".'"'." value='Comprar!'></td><td></td></tr>";
+			}
+			else{}
+		}
+		echo "</table></form>";
+		if($_SESSION['cloudUser']['saldo']>0){
+			if ($_SESSION['cloudUser']['saldo']>$suma) {}
+			else{
+				echo '<div class="alert alert-error"><center><b>Saldo no suficiente</b> - Haz una <a href="rec_c.php">recarga aquí</a></center></div>';
 			}
 		}
-		//muestro el total
-		echo "<tr><td></td><td><b>TOTAL:</b></td><td> <b>$suma</b></td><td><input id='update-b' class='btn btn-success' type='submit' value='Actualizar'></td></tr>";
-		if ($_SESSION['cloudUser']['pk_cu']>0) {
-		echo "<tr><td></td><td></td><td><a href='Controlador/confirmar.php' class='btn btn-info'>Comprar!</a></td><td></td></tr>";
-		}
-		echo "</table>
-				</form>";
 	}
 	
 

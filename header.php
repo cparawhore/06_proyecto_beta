@@ -18,8 +18,9 @@
 						if(!isset($_SESSION['cloudUser']['cnick']))	
 							{	print('<div class="span9">
 									<a class="pull-right a-head" href="signUp.php"><button tabindex="3" class="btn btn-succes btn-large">Registrarse</button></a>
-									<a class="pull-right a-head" href="logIn.php"><button tabindex="3" class="btn btn-succes btn-large">Ingresar</button></a>
-			    				</div>'	
+									
+			    				</div>'
+			    				//<a class="pull-right a-head" href="logIn.php"><button tabindex="3" class="btn btn-succes btn-large">Ingresar</button></a>	
 								);
 							}
 						else
@@ -37,7 +38,7 @@
 			              				<li><a href="index.php">Inicio</a></li>
 										<li><a href="items.php">Items</a></li>
 			              				<li><a href="carrito.php">Carrito ('.$_SESSION['ocarrito']->getItem().')</a></li>
-			              				<li><a href="carrito.php">Saldo: <b>'.$_SESSION['cloudUser']['pk_cu'].'</b></a></li>
+			              				<li><a href="#">Saldo: <b>'.$_SESSION['cloudUser']['saldo'].'</b></a></li>
 			              				<li class="dropdown">
 			                				<a href="#" class="dropdown-toggle" data-toggle="dropdown">'.$_SESSION['cloudUser']['cnick'].'<b class="caret"></b></a>
 			                				<ul class="dropdown-menu">

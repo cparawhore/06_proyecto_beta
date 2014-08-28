@@ -60,7 +60,7 @@
 	 
      public function listarItems($inicio, $limite)
      {
-         $sql = "select it_nombre,it_stock,it_precio,it_aspecto,it_hero,it_id,it_limg from items_cloud_d limit ".$inicio.",".$limite;
+         $sql = "select it_nombre,it_stock,it_precio,it_aspecto,it_hero,it_id,it_limg from items_cloud_d where it_stock!=0 limit ".$inicio.",".$limite;
 
          $result = mysqli_query($this->conexion, $sql);
 

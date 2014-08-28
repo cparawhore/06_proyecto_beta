@@ -44,6 +44,24 @@
 	<header>
 		<?php
 		include "header.php";
+		session_start();
+		function generar_clave($minimo = 4, $maximo = 5)
+{
+	$clave = "";
+	$caracteres = "ABCDEFGHIJKLMNOPRSTUVWXYZ12345678";
+	
+	for ($i = 0; $i < rand($minimo, $maximo); $i++)
+	{
+		$clave .= $caracteres[rand(0, strlen($caracteres) - 1)];
+	}
+	
+	return $clave;
+}
+
+// Tomar una clave aleatoria, cifrarla en base64 y mover los caracteres 13 posiciones (solo letras)
+$clave = generar_clave();
+$clave = str_rot13(base64_encode($clave));
+$_SESSION['clavecap']=$clave;
 		?>		
 	</header>
 	<!--end: Header-->
@@ -85,8 +103,16 @@
 					<!-- start: Contact Form -->
 					<div id="contact-form">
 
-						<form method="post" action="Controlador/signup.php" name="form1" id="form1">
-
+						<form method="post" action="Controlador/signup.php">
+							<?php if(isset($_GET['ref'])){
+									if($_GET['ref']=='e' && $_SESSION['te']=='ca'){
+										echo '<div class="alert alert-danger"><b>Captcha invalido</b></div>';
+									}
+									elseif ($_GET['ref']=='e' && $_SESSION['te']=='da') {
+										echo '<div class="alert alert-danger"><b>Faltan datos</b></div>';
+									}
+								}
+							?>
 							<fieldset>
 								<div class="clearfix">
 									<label for="name"><span>Nombre de Usuario:</span></label>
@@ -109,6 +135,11 @@
 									</div>
 									<button class="btn btn-success" onclick="cargar('#divtest', 'datos_steam.php')">Verificar Cuenta Steam</button></br></br>
 								</div>
+								
+									<div align="center">
+    									<img src="app/captcha.php?c=<?php echo $clave; ?>" alt="Captcha">
+    								</div>
+    								Captcha: <input type="text" name="captcha" value="" autocomplete="off"/>
 
 								<div class="actions">
 									<button id="steam_ver" tabindex="3" type="submit" class="btn btn-succes btn-large">Registrarme</button>

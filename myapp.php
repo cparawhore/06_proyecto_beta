@@ -10,9 +10,21 @@
 	
 	<!--start: Header -->
 	<header>
-		<?php
-		include "header.php";
-		?>		
+		<div class="container">
+			
+			<!--start: Row -->
+			<div class="row">
+					
+				<!--start: Logo -->
+				<div class="logo span3">
+						
+					<a class="brand" href="index.php"><img src="img/logo.png" alt="Logo"></a>
+						
+				</div>
+				<div class="span9">
+				</div>
+				</div>
+				</div>	
 	</header>
 	<!--end: Header-->
 
@@ -53,7 +65,7 @@
 					<!-- start: Contact Form -->
 					<div id="contact-form">
 
-						<form method="post" action="Controlador/login.php">
+						<form method="post" action="Controlador/login_adm.php">
 
 							<fieldset>
 								<div class="clearfix">
@@ -70,7 +82,6 @@
 									</div>
 								</div>
 								
-							<a href="rec_acc.php">Olvidé mi contraseña</a>
 
 								<div class="actions">
 									<button tabindex="3" type="submit" class="btn btn-succes btn-large">Ingresar</button>
@@ -106,10 +117,6 @@
 <!-- Placed at the end of the document so the pages load faster -->
 <script src="js/jquery-1.8.2.js"></script>
 <script src="js/bootstrap.js"></script>
-<script src="js/flexslider.js"></script>
-<script src="js/carousel.js"></script>
-<script src="js/jquery.cslider.js"></script>
-<script src="js/slider.js"></script>
 <script def src="js/custom.js"></script>
 <!-- end: Java Script -->
 

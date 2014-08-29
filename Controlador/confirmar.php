@@ -23,12 +23,12 @@ require_once  '../app/Config.php';
 				$_SESSION['cloudUser']['saldo']=$_SESSION['cloudUser']['saldo']-$_SESSION["ocarrito"]->getS();
 				unset($_SESSION["ocarrito"]);
 				$mysqli->commit();
-				header('Location: exito_compra.php');
+				header('Location: ../exito_compra.php');
 			}
 				
 			else{
 				$mysqli->rollback();
-				header('Location: error_compra.php');
+				header('Location: ../error_compra.php');
 			}
 				
 			

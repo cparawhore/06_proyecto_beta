@@ -49,11 +49,17 @@
 						<li class="twitter"><a href="#">twitter</a></li>
 						
 					</ul>
+					<div class="title"><h3><a href="comments.php">Sugerencias y comentarios!</a></h3></div>
 				</div>
-
-				<div class="span4">
+				<?php
+				if(!isset($_SESSION['cloudUser']['cnick']))	{
+					
+				}
+				else{ ?>
+				
+					<div class="span4">
 					<div class="title"><h3>Faltan sets o partes?</h3></div>
-					<form method="post" action="Controlador/signup.php">
+					<form method="post" action="Controlador/hero_suge.php">
       			No encuentras algún item que quieras adquirir? Mandanos una sugerencia, formato :</br>
       			<b>Set o Item</b> - <b>Heroe</b>
       			<div class="input">
@@ -64,6 +70,10 @@
 					</div>
 				</form>
 				</div>
+				<?php
+				}
+				?>
+				
 
 			</div>
 			<!-- end: Row -->	

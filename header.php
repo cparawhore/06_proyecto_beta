@@ -39,10 +39,12 @@
 										<li><a href="items.php">Items</a></li>
 			              				<li><a href="carrito.php">Carrito ('.$_SESSION['ocarrito']->getItem().')</a></li>
 			              				<li><a href="#">Saldo: <b>'.$_SESSION['cloudUser']['saldo'].'</b></a></li>
+			              				<li><a href="comments.php">Comentarios</b></a></li>
 			              				<li class="dropdown">
 			                				<a href="#" class="dropdown-toggle" data-toggle="dropdown">'.$_SESSION['cloudUser']['cnick'].'<b class="caret"></b></a>
 			                				<ul class="dropdown-menu">
 			                  					<li><a href="edit_acc.php">Editar mi cuenta</a></li>
+			                  					<li><a href="compras.php">Mis compras</a></li>
 			                  					<li><a href="rec_c.php">Hacer recarga</a></li>
 			                  					<li class="divider"></li>
 			                  					<li class="nav-header"></li>

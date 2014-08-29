@@ -35,6 +35,22 @@
 
 	}
 
+    public function conectar_admins($cu, $pass) {
+        
+        $sql = "select pk_cu,cloud_user,enc_pass from cloud_admins where cloud_user='".$cu."' and enc_pass='".$pass."'";
+         $result = mysqli_query($this->conexion,$sql);
+
+         $datos = array();
+         
+         while ($row = mysqli_fetch_assoc($result))
+         {
+             $datos = $row;
+         }
+
+         return $datos;
+
+    }
+
     public function consultar_saldo($pk_cu) {
         
         $sql = "select saldo from bcc where pk_cu=".$pk_cu;
@@ -77,6 +93,21 @@
      public function getDataItem($cid)
      {
          $sql = "select it_nombre,it_precio,it_aspecto,it_hero,it_id from items_cloud_d where it_id='".$cid."'";
+
+         $result = mysqli_query($this->conexion, $sql);
+
+         $itemsData = array();
+         while ($row = mysqli_fetch_assoc($result))
+         {
+             $itemsData[] = $row;
+         }
+
+         return $itemsData;
+     }
+
+     public function getMisCompras($pk_cu)
+     {
+         $sql = "select total,estado,cant,id_compra from cl_compra where cl_user='".$pk_cu."'";
 
          $result = mysqli_query($this->conexion, $sql);
 

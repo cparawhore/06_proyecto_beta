@@ -10,15 +10,14 @@ session_start();
 	//constructor. Realiza las tareas de inicializar los objetos cuando se instancian
 	//inicializa el numero de productos a 0
 	function carrito () {
-   		$this->num_items=0;
+   		$this->num_items=count($this->array_id_item);
+
 	}
 
 	function getS () {
 		$suma = 0;
 		for ($i=0;$i<$this->num_items;$i++){
-			if($this->array_id_item[$i]!=null){
 				$suma += $this->array_precio_item[$i] * $this->array_cant_item[$i];
-			} 
 		}
    		return $suma;
 	}
@@ -26,7 +25,7 @@ session_start();
 	function confirmar () {
 		$datos = array();
    		for ($i=0;$i<$this->num_items;$i++){
-			if($this->array_id_item[$i]!=null){
+			if($this->array_id_item[$i]!=''){
 				$datos[$i]['id'] = $this->array_id_item[$i];
 				$datos[$i]['nombre'] = $this->array_nombre_item[$i];
 				$datos[$i]['precio'] = $this->array_precio_item[$i];
@@ -38,8 +37,8 @@ session_start();
 
 	function getItem () {
 		$cant = 0;
-		for ($i=0;$i<$this->num_items;$i++){
-			if($this->array_id_item[$i]!=null)
+		for ($i=0;$i<count($this->array_id_item);$i++){
+			if($this->array_id_item[$i]!='')
 			{ 
 				$cant++;
 			}
@@ -86,16 +85,15 @@ session_start();
 				<th>&nbsp;</th>
 			  </tr></thead>';
 		for ($i=0;$i<$this->num_items;$i++){
-			if($this->array_id_item[$i]!=null){
 				echo '<tr>';
 				echo "<td>" . $this->array_nombre_item[$i] . "</td>";
 				echo "<td>" . $this->array_precio_item[$i] . "</td>";
 				echo "<td><input type='text' value='" . $this->array_cant_item[$i] . "' class='item-cantidad' name='q[]' autocomplete='off'>
 							<input type='hidden' value='$i' name='linea[]'></td>";
-				echo "<td><a href='Controlador/delete_item_c.php?linea=$i'>Eliminar</td>";
+				echo "<td><a href='Controlador/delete_item_c.php?linea=$i'>Eliminar</a></td>";
 				echo '</tr>';
 				$suma += $this->array_precio_item[$i] * $this->array_cant_item[$i];
-			} 
+			
 		}
 
 		//muestro el total
@@ -120,10 +118,17 @@ session_start();
 	}
 	
 
-	//elimina un producto del carrito. recibe la linea del carrito que debe eliminar
-	//no lo elimina realmente, simplemente pone a cero el id, para saber que esta en estado retirado
+	//Eliminamos y reordenamos el array
 	function elimina_item($linea){
-		$this->array_id_item[$linea]=null;
+		unset($this->array_id_item[$linea]);
+		unset($this->array_nombre_item[$linea]);
+		unset($this->array_precio_item[$linea]);
+		unset($this->array_cant_item[$linea]);
+		$this->array_id_item = array_values($this->array_id_item);
+		$this->array_nombre_item = array_values($this->array_nombre_item);
+		$this->array_precio_item = array_values($this->array_precio_item);
+		$this->array_cant_item = array_values($this->array_cant_item);
+		$this->num_items--;
 	}
 
 	function actualiza_item($linea,$q){

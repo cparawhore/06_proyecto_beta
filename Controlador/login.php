@@ -16,7 +16,7 @@ $m = new Model(Config::$mvc_bd_hostname, Config::$mvc_bd_usuario,
     $user = new SteamUser($ste_id[4],'5C0B43D4E3936F5288A311A55FCCFC0F');
     $_SESSION['cloudUser']['pk_cu']=$m->conectar_usuarios($cu,$pass)['pk_cu'];
     $_SESSION['cloudUser']['saldo']=$m->consultar_saldo($_SESSION['cloudUser']['pk_cu'])['saldo'];
-    $_SESSION['cloudUser']['cnick']="chris";//$user->getProfileData()['datosCuenta']['steamID'];
+    $_SESSION['cloudUser']['cnick']=$user->getProfileData()['datosCuenta']['steamID'];
     $_SESSION['cloudUser']['avatarIcon']=$user->getProfileData()['datosCuenta']['avatarMedium'];
     $_SESSION['cloudUser']['ste_acc_1']=$m->conectar_usuarios($cu,$pass)['ste_acc_1'];
   }

@@ -50,6 +50,7 @@
          return $datos;
 
     }
+
 	
 	public function add_cloud_acc($cu,$enc_pass,$ste_acc){
 		$sql = "insert into cloud_users (cloud_user,enc_pass, ste_acc) values ('".$cu."','".$enc_pass."','".$ste_acc."')";
